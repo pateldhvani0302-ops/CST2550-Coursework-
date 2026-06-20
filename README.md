@@ -37,14 +37,6 @@ The basic idea was to keep the **algorithmic, in-memory side of things** separat
 - One small cheat: there's a `List<(int,int)>` used purely as a scratch buffer while the operator is typing in sale line items, in `ConsoleMenu.RecordSaleMenu`. It's just UI input handling, not part of the actual data model, so I didn't see the point in reinventing it there.
 - For search, `Search/SearchAlgorithms.cs` has a proper textbook **binary search** (O(log n), needs a sorted array) and a **linear search** (O(n)) sitting alongside the HashTable/BST lookups already used in `ProductRepository`. That covers the "at least two search algorithms" requirement and gives a few different approaches worth comparing in the report.
 
-## Prerequisites
-
-- [.NET 8 SDK](https://dotnet.microsoft.com/download)
-- SQL Server (Express, Developer, LocalDB, or anything remote you have access to)
-- Optionally, Visual Studio 2022 or VS Code with the C# extension
-
-> **Heads up:** I wrote and checked this code carefully, but couldn't actually compile it in the environment I was working in (no internet access to NuGet). Please do a full `dotnet restore` and `dotnet build` before you run it for the first time, and keep an eye out for any small build issues that might need ironing out.
-
 ## Database setup
 
 1. Open `database/CreateDatabase.sql` in SQL Server Management Studio (or run it via `sqlcmd`) against your SQL Server instance. This sets up the `SupermarketDb` database and all the tables (`Categories`, `Suppliers`, `Products`, `StockRecords`, `Sales`, `SaleItems`).
